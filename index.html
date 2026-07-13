@@ -623,14 +623,14 @@ function figureForBeats(beats) {
 
 const clone = obj => JSON.parse(JSON.stringify(obj));
 
-const LOREM = {
-  verso: 'Lorem ipsum dolor sit amet, consectetur,\nadipiscing elit sed do eiusmod ya.\nTempor incididunt ut labore et dolore,\nmagna aliqua, enim ad minim hoy.',
-  puente: 'Ut enim ad minim veniam, quis nostrud,\nexercitation ullamco laboris nisi.\nUt aliquip ex ea commodo consequat.',
-  coro: 'Duis aute irure dolor in reprehenderit,\nin voluptate velit esse cillum hoy.\nExcepteur sint occaecat cupidatat,\nnon proident, sunt in culpa qui sí.',
+const EJEMPLO = {
+  verso: 'verso de ejemplo numero 1, \esto es solo un verso de ejemplo numero 1.\ verso de ejemplo,\ aqui tenemos un verso de ejemplo.',
+  puente: 'texto de ejemplo para puente numero 1, \esto solo es un texto de ejemplo para puente numero 1.\texto de ejemplo para puente.',
+  coro: 'coro de ejemplo numero 1,\este es el coro de ejemplo numero 1.\texto de coro ejemplo 1,\solo es un texto de ejemplo para el coro.',
 };
 
 const SAMPLE_SONG = {
-  meta: { title: 'Lorem Ipsum', time: '4/4', key: 'C', tempo: '96', capo: '2', transpose: 0 },
+  meta: { title: 'Canción de ejemplo', time: '4/4', key: 'C', tempo: '96', capo: '2', transpose: 0 },
   groups: [
     { id: uid(), measures: [
       { chord: 'C', dur: 'quarter' }, { chord: 'Am', dur: 'quarter' },
@@ -648,9 +648,9 @@ const SAMPLE_SONG = {
   ],
   structure: [],
   lyrics: [
-    { id: uid(), name: 'Verso 1', text: LOREM.verso },
-    { id: uid(), name: 'Puente', text: LOREM.puente },
-    { id: uid(), name: 'Coro', text: LOREM.coro },
+    { id: uid(), name: 'Verso 1', text: EJEMPLO.verso },
+    { id: uid(), name: 'Puente', text: EJEMPLO.puente },
+    { id: uid(), name: 'Coro', text: EJEMPLO.coro },
   ],
 };
 (function () {
