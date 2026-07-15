@@ -1,50 +1,42 @@
 /* ============================================================
-   SERVICE WORKER — Musigatari PWA
-   Guarda todos los archivos en caché para funcionar offline.
+   SERVICE WORKER — Musigatari v2
+   Cambia 'musigatari-v2' a 'musigatari-v3' cada vez que
+   subas una actualización para que los celulares la descarguen.
    ============================================================ */
-
-const CACHE = 'musigatari-v1';
+const CACHE = 'musigatari-v2';
 
 const ARCHIVOS = [
   './',
-  './index.html',
+  './Acordes_08.html',
+  './manifest.json',
   './config/config.js',
   './config/icon.svg',
   './config/qr.svg',
   './config/explicacion.html',
-  './manifest.json'
 ];
 
-/* Al instalar: guarda todos los archivos en caché */
 self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE).then(cache => cache.addAll(ARCHIVOS))
-  );
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ARCHIVOS)));
   self.skipWaiting();
 });
 
-/* Al activar: elimina cachés viejos */
 self.addEventListener('activate', e => {
-  e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-    )
-  );
+  e.waitUntil(caches.keys().then(keys =>
+    Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+  ));
   self.clients.claim();
 });
 
-/* Al hacer fetch: responde desde caché, si no está lo busca en red */
 self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;
-      return fetch(e.request).then(response => {
-        /* Guarda en caché las respuestas nuevas */
-        if (response && response.status === 200) {
-          const copy = response.clone();
-          caches.open(CACHE).then(cache => cache.put(e.request, copy));
+      return fetch(e.request).then(res => {
+        if (res && res.status === 200) {
+          const copy = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, copy));
         }
-        return response;
+        return res;
       }).catch(() => cached);
     })
   );
