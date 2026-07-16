@@ -54,7 +54,7 @@ window.APP_CONFIG = {
                  (1 = igual que el resto). */
   notes: {
     base: 30,
-    wholeScale: 2,
+    wholeScale: 1,
     halfScale: 1,
   },
 
