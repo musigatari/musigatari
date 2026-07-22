@@ -14,7 +14,7 @@ window.APP_CONFIG = {
 
   /* ---- SUBTÍTULO ----
      Texto pequeño debajo del nombre. */
-  subtitle: 'Aprendiendo canciones',
+  subtitle: 'In canciones',
 
   /* ---- NOMBRE COMO IMAGEN SVG (OPCIONAL) ----
      Si quieres usar un logotipo SVG en lugar del texto del
@@ -30,6 +30,14 @@ window.APP_CONFIG = {
      Reemplaza el archivo config/icon.svg por el tuyo, o cambia
      la ruta aquí. */
   iconPath: 'config/icon.svg',
+
+  /* ---- ICONO PARA PDF (OPCIONAL) ----
+     Aparece en gris junto al título de cada canción al imprimir.
+     Si lo dejas en null, se usa iconPath de arriba (se muestra en
+     gris automáticamente). Si tu logo se ve mejor con una versión
+     distinta en escala de grises, pon aquí su ruta, por ejemplo
+     'config/icon-gris.svg'. */
+  printIconPath: null,
 
   /* ---- CÓDIGO QR ----
      Imagen SVG del código QR (pantalla de inicio → Código QR).
@@ -53,10 +61,19 @@ window.APP_CONFIG = {
      halfScale:  multiplicador SOLO para la blanca
                  (1 = igual que el resto). */
   notes: {
-    base: 30,
-    wholeScale: 1,
+    base: 22,
+    wholeScale: 1.3,
     halfScale: 1,
   },
+
+  /* ---- TAMAÑO DEL TEXTO DE LOS ACORDES ----
+     Todo el texto de la sección de canción (compás/tono/tempo,
+     acordes, letra de estructura y letra de la canción) comparte
+     el mismo tamaño base. Este valor es cuántos píxeles MÁS GRANDE
+     se ve el texto de los acordes (C, Am, G7…) respecto a ese base,
+     para que resalte un poco más que el resto.
+     Ponlo en 0 para que se vea igual que el resto. */
+  chordSizeOffsetPx: 2,
 
   /* ---- SONIDOS DEL METRÓNOMO (OPCIONAL) ----
      Si quieres reemplazar el «bip» del metrónomo por archivos
